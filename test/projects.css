@@ -5,8 +5,8 @@
 .project-gallery { position: relative; overflow: hidden; background: var(--ink); }
 .project-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
 .project-track::-webkit-scrollbar { display: none; }
-.project-slide { flex: 0 0 100%; min-width: 0; aspect-ratio: 4 / 3; scroll-snap-align: start; scroll-snap-stop: always; }
-.project-slide img { width: 100%; height: 100%; object-fit: contain; }
+.project-slide { position: relative; flex: 0 0 100%; min-width: 0; aspect-ratio: 16 / 9; scroll-snap-align: start; scroll-snap-stop: always; }
+.project-slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .project-photo-label { position: absolute; top: 20px; left: 20px; padding: 7px 12px; background: #14241fe6; color: #fff; font-size: .875rem; pointer-events: none; }
 .project-controls { position: absolute; bottom: 20px; right: 20px; display: flex; align-items: center; background: #fff; color: var(--ink); box-shadow: 0 3px 15px #0002; }
 .project-controls button { display: grid; place-items: center; border: 0; background: transparent; color: inherit; width: 48px; height: 48px; font-size: 1.4rem; transition: background .15s; }
@@ -53,7 +53,7 @@
 .process-is-playing .process-play-icon { width: 32px; height: 32px; }
 .process-player { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: var(--ink); }
 .process-player[hidden] { display: none; }
-.process-frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .65s ease-in-out; }
+.process-frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .65s ease-in-out; }
 .process-frame.is-visible { opacity: 1; }
 .process-player-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 42px 20px 18px; background: linear-gradient(transparent, #14241ff5); color: #fff; }
 .process-stage { display: block; font-size: .875rem; font-weight: 600; line-height: 1.5; }
@@ -65,3 +65,17 @@
 .process-is-active .project-counter { display: none; }
 @media (hover: none), (pointer: coarse) { .process-play { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%); } .process-is-playing .process-play { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .process-frame, .process-play { transition: none; } }
+
+/* Center the photographic area in source files with embedded black bars. */
+.project-slide img[src="assets/projects/old-town/photo_04.webp"] { transform: scale(1.04); transform-origin: center top; }
+.project-slide img[src="assets/projects/old-town/photo_01.webp"] { object-position: center 64.74%; }
+.project-slide img[src="assets/projects/old-town/photo_02.webp"] { object-position: center 88.48%; }
+.project-slide img[src="assets/projects/old-town/photo_03.webp"] { object-position: center 38.00%; }
+.project-slide img[src="assets/projects/old-town/photo_05.webp"] { object-position: center 56.38%; }
+.project-slide img[src="assets/projects/old-town/photo_06.webp"] { object-position: center 42.34%; }
+.project-slide img[src="assets/projects/old-town/photo_07.webp"] { object-position: center 40.44%; }
+.project-slide img[src="assets/projects/pavers-80/photo_02.webp"] { object-position: center 52.76%; }
+.project-slide img[src="assets/projects/pavers-80/photo_03.webp"] { object-position: center 50.95%; }
+.project-slide img[src="assets/projects/pavers-80/photo_04.webp"] { object-position: center 51.86%; }
+.project-slide img[src="assets/projects/pavers-80/photo_05.webp"] { object-position: center 36.76%; }
+.project-slide img[src="assets/projects/pavers-80/photo_06.webp"] { object-position: center 31.14%; }
