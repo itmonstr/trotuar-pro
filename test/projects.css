@@ -2,6 +2,10 @@
 .projects-heading { align-items: flex-end; }
 .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; }
 .project-card { min-width: 0; background: #fff; border: 1px solid #dbe2d8; }
+.projects-more { display: flex; justify-content: center; margin-top: 42px; }
+.service-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.service-grid-four .card-large { grid-column: span 1; }
+.service-grid-four .service-card { min-height: 350px; }
 .project-gallery { position: relative; overflow: hidden; background: var(--ink); }
 .project-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
 .project-track::-webkit-scrollbar { display: none; }
