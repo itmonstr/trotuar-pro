@@ -6,6 +6,8 @@
 .service-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .service-grid-four .card-large { grid-column: span 1; }
 .service-grid-four .service-card { min-height: 350px; }
+.service-card-plain { background: radial-gradient(circle at 80% 20%, #58765f 0, transparent 40%), linear-gradient(135deg, #173b30, #14241f); }
+.service-card-plain:after { background: linear-gradient(0deg, rgba(10,23,18,.4), transparent); }
 .project-gallery { position: relative; overflow: hidden; background: var(--ink); }
 .project-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
 .project-track::-webkit-scrollbar { display: none; }
