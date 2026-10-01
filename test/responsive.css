@@ -1,0 +1,53 @@
+/* Shared layout adjustments for phones and tablets. */
+h1, h2, h3 { overflow-wrap: anywhere; }
+.service-grid-four .service-card { width: 100%; max-width: 100%; aspect-ratio: auto; }
+.service-feature > div, .detail-card, .project-details, .tech-copy { min-width: 0; }
+.service-feature img { min-width: 0; max-width: 100%; }
+.paver-choice { min-width: 0; overflow-wrap: anywhere; }
+.paver-choice > span, .paver-choice > b { flex-shrink: 0; }
+
+@media (max-width: 760px) {
+  .service-grid-four .service-card { min-height: 330px; }
+  .service-feature h2 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+  .service-feature img { height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+  .inner-hero { padding-block: 48px; }
+  .service-detail-hero h1 { font-size: clamp(1.9rem, 7.5vw, 3rem); line-height: 1.14; }
+  .inner-hero p { font-size: 1rem; line-height: 1.6; }
+  .service-back { margin-bottom: 28px; }
+  .detail-intro, .detail-section { padding-block: 48px; }
+  .detail-intro h2, .detail-section h2 { font-size: clamp(1.85rem, 7vw, 2.5rem); }
+  .detail-section-head { margin-bottom: 28px; }
+  .detail-card { padding: 24px; }
+  .detail-card span { margin-bottom: 28px; }
+  .detail-note { padding: 20px; }
+  .service-photo figcaption { display: block; }
+  .detail-links { gap: 18px 24px; }
+  .inner-cta { padding-block: 48px; }
+  .text-link { max-width: 100%; }
+  .text-link > span, .button > span { flex-shrink: 0; }
+}
+
+@media (max-width: 600px) {
+  .price-row { flex-direction: column; align-items: flex-start; gap: 8px; padding: 18px 20px; }
+  .price-row span { min-width: 0; }
+  .price-row strong { font-size: 1.2rem; }
+  .paver-choice { gap: 12px; }
+  .paver-panel-copy { padding: 20px; }
+  .project-filters button { min-height: 44px; }
+  .project-details h3 { font-size: clamp(1.4rem, 6vw, 1.8rem); }
+  .project-kicker { flex-wrap: wrap; gap: 5px 12px; }
+  .project-facts { gap: 0; }
+  .project-facts > div { min-width: 0; }
+  .request-form input, .request-form textarea { font-size: 16px; }
+}
+
+@media (max-width: 380px) {
+  .hero h1 { font-size: 2.8rem; }
+  .hero-actions .button { gap: 16px; padding-inline: 16px; }
+  .steps { grid-template-columns: 1fr; }
+  .steps article { min-height: 0; padding: 24px; }
+  .steps article span { margin-bottom: 20px; }
+  .project-details { padding: 20px; }
+  .project-facts dd { font-size: 1.45rem; }
+  .tech-caption { min-width: 0; width: 100%; padding: 18px; }
+}
