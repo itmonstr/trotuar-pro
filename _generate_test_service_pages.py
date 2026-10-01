@@ -85,29 +85,93 @@ DETAILS = {
     },
 }
 
+PHOTO_DATA = {
+    'ukladka-plitki': [
+        ('../assets/projects/pavers-120/photo_06.webp', 'Брусчатка у бассейна', 'Фото выполненного проекта'),
+        ('../assets/projects/large-format/photo_11.webp', 'Широкоформатная плитка', 'Фото выполненного проекта'),
+        ('../assets/projects/old-town/photo_07.webp', 'Плитка «Старый город»', 'Фото выполненного проекта'),
+        ('../assets/projects/pavers-80/photo_11.webp', 'Мощение двора', 'Фото выполненного проекта'),
+    ],
+    'betonirovanie-dvorov': [
+        (f'../assets/service-demos/concrete-{n}.webp', label, 'Демонстрационное изображение')
+        for n, label in enumerate(('Подготовка и армирование', 'Заливка бетона', 'Выравнивание поверхности', 'Готовый бетонный двор'), 1)
+    ],
+    'uhod-za-plitkoy': [
+        (f'../assets/service-demos/care-{n}.webp', label, 'Демонстрационное изображение')
+        for n, label in enumerate(('Мойка плитки', 'Нанесение защитного состава', 'Обновление швов', 'Удаление травы из швов'), 1)
+    ],
+    'blagoustroystvo-uchastka': [
+        (f'../assets/service-demos/landscape-{n}.webp', label, 'Демонстрационное изображение')
+        for n, label in enumerate(('Устройство дренажа', 'Ландшафтное освещение', 'Автоматический полив', 'Укладка рулонного газона'), 1)
+    ],
+}
+
+PRICE_DATA = {
+    'ukladka-plitki': [
+        ('Укладка плитки на готовое основание', 'от 900 ₽/м²'),
+        ('Укладка брусчатки на готовое основание', 'от 1 100 ₽/м²'),
+        ('Подготовка основания и укладка плитки', 'от 2 200 ₽/м²'),
+    ],
+    'betonirovanie-dvorov': [
+        ('Подготовка основания под бетонирование', 'от 650 ₽/м²'),
+        ('Армирование площадки', 'от 450 ₽/м²'),
+        ('Бетонирование двора', 'от 1 800 ₽/м²'),
+    ],
+    'uhod-za-plitkoy': [
+        ('Мойка тротуарной плитки', 'от 250 ₽/м²'),
+        ('Гидрофобная пропитка', 'от 350 ₽/м²'),
+        ('Засыпка и обновление швов', 'от 180 ₽/м²'),
+        ('Удаление травы из швов', 'от 150 ₽/м²'),
+    ],
+    'blagoustroystvo-uchastka': [
+        ('Дренаж и отвод воды', 'от 1 500 ₽/пог. м'),
+        ('Ландшафтный свет', 'от 3 500 ₽/точка'),
+        ('Автоматический полив', 'от 12 000 ₽/зона'),
+        ('Подготовка и укладка газона', 'от 750 ₽/м²'),
+    ],
+}
+
+PAVER_TYPES = [
+    ('Брусчатка 100 × 200', '../assets/projects/pavers-120/photo_06.webp', 'Прямоугольный формат для двора, дорожек и зоны у бассейна. Рисунок укладки подбираем под планировку участка.'),
+    ('Широкоформатная плитка', '../assets/projects/large-format/photo_11.webp', 'Крупные плиты создают спокойный рисунок покрытия. На одном из наших объектов использован формат 600 × 300 мм.'),
+    ('«Старый город»', '../assets/projects/old-town/photo_07.webp', 'Набор элементов разного размера даёт выразительный рисунок мощения. Пример — выполненный проект площадью 200 м².'),
+]
+
+def render_paving_special():
+    buttons = ''.join(
+        f'<button class="paver-choice{" is-active" if i == 0 else ""}" type="button" role="tab" id="paver-tab-{i}" aria-controls="paver-panel-{i}" aria-selected="{"true" if i == 0 else "false"}" tabindex="{0 if i == 0 else -1}"><span>0{i + 1}</span>{e(name)}<b aria-hidden="true">↗</b></button>'
+        for i, (name, _, _) in enumerate(PAVER_TYPES)
+    )
+    panels = ''.join(
+        f'<div class="paver-panel" id="paver-panel-{i}" role="tabpanel" aria-labelledby="paver-tab-{i}"{" hidden" if i else ""}><img src="{e(image)}" alt="Пример покрытия: {e(name)}" loading="lazy"><div class="paver-panel-copy"><span>Тип покрытия</span><h3>{e(name)}</h3><p>{e(description)}</p></div></div>'
+        for i, (name, image, description) in enumerate(PAVER_TYPES)
+    )
+    return f'''<section class="detail-section" id="coverings"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Варианты покрытия</div><h2>Виды плитки и брусчатки</h2><p>Выберите покрытие слева, чтобы увидеть фотографию и описание. На снимках — материалы из выполненных проектов.</p></div><div class="paver-browser"><div class="paver-choices" role="tablist" aria-label="Виды плитки">{buttons}</div><div class="paver-panels">{panels}</div></div><p class="detail-note">Также можно обсудить уличный керамогранит и клинкерную брусчатку. Покрытие подберём под нагрузку и особенности участка.</p></div></section>
+    <section class="detail-section" id="examples"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Реальные объекты</div><h2>Посмотрите результат</h2><p>В каталоге — шесть проектов с фотографиями, площадью и сроками работ.</p></div><a class="button button-lime" href="../projects.html">Смотреть проекты <span aria-hidden="true">↗</span></a></div></section>'''
+
 def e(text):
     return escape(text, quote=True)
 
 def render(service):
     title = e(service['title'])
     detail = DETAILS[service['slug']]
+    photo_intro = ('Фотографии из выполненных проектов по укладке.' if service['slug'] == 'ukladka-plitki'
+                   else 'Временные иллюстрации услуги. Заменим их фотографиями выполненных объектов Кирилла.')
     extra_ids = ['drenazh', 'osveshchenie', 'avtopoliv', 'gazon'] if service['slug'] == 'blagoustroystvo-uchastka' else []
     cards = ''
     for i, (name, body) in enumerate(service['items'], 1):
         id_attr = f' id="{extra_ids[i - 1]}"' if extra_ids else ''
         cards += f'<article class="detail-card"{id_attr}><span>{i:02d}</span><h3>{e(name)}</h3><p>{e(body)}</p></article>'
     related = ''.join(f'<a href="{e(href)}">{e(name)} ↗</a>' for name, href in service['related'])
-    photos = ''.join(f'<div class="photo-placeholder" role="img" aria-label="Место для фотографии: {e(label)}"><span>Фото реального проекта</span><strong>{e(label)}</strong><small>Добавим после согласования</small></div>' for label in detail['photos'])
-    prices = ''.join(f'<div class="price-row"><span>{e(label)}</span><strong>—</strong></div>' for label in detail['prices'])
-    special = ''
-    if service['slug'] == 'ukladka-plitki':
-        special = '''
-    <section class="detail-section" id="coverings"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Варианты покрытия</div><h2>Виды плитки и брусчатки</h2><p>Выбор зависит от задачи и пожеланий заказчика. На фотографиях — материалы из выполненных проектов.</p></div><div class="detail-image-grid">
-      <article class="detail-image-card"><img src="../assets/projects/pavers-120/photo_06.webp" alt="Брусчатка 100 на 200 мм у бассейна" loading="lazy"><div><h3>Брусчатка 100 × 200</h3><p>Использована в проектах у бассейна и у дома.</p></div></article>
-      <article class="detail-image-card"><img src="../assets/projects/large-format/photo_11.webp" alt="Укладка широкоформатной плитки" loading="lazy"><div><h3>Широкоформатная плитка</h3><p>В каталоге есть объект с форматом 600 × 300 мм.</p></div></article>
-      <article class="detail-image-card"><img src="../assets/projects/old-town/photo_07.webp" alt="Плитка Старый город" loading="lazy"><div><h3>«Старый город»</h3><p>Пример покрытия площадью 200 м².</p></div></article>
-    </div><p class="detail-note">Также можно обсудить уличный керамогранит и клинкерную брусчатку. Подбор покрытия зависит от запроса и условий участка.</p></div></section>
-    <section class="detail-section" id="examples"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Реальные объекты</div><h2>Посмотрите результат</h2><p>В каталоге — шесть проектов с фотографиями, площадью и сроками работ.</p></div><a class="button button-lime" href="../projects.html">Смотреть проекты <span aria-hidden="true">↗</span></a></div></section>'''
+    photos = ''.join(
+        f'<figure class="service-photo"><img src="{e(src)}" alt="{e(label)}" loading="lazy"><figcaption><strong>{e(label)}</strong><span>{e(note)}</span></figcaption></figure>'
+        for src, label, note in PHOTO_DATA[service['slug']]
+    )
+    prices = ''.join(
+        f'<div class="price-row"><span>{e(label)}</span><strong>{e(amount)}</strong></div>'
+        for label, amount in PRICE_DATA[service['slug']]
+    )
+    special = render_paving_special() if service['slug'] == 'ukladka-plitki' else ''
     card_class = 'detail-cards detail-cards-four' if service['slug'] == 'blagoustroystvo-uchastka' else 'detail-cards'
     return f'''<!doctype html>
 <html lang="ru">
@@ -131,13 +195,14 @@ def render(service):
     <section class="detail-intro"><div class="container detail-intro-grid"><div><div class="eyebrow"><span class="eyebrow-line"></span> Об услуге</div><h2>Что важно знать</h2></div><p>{e(detail['about'])}</p></div></section>
     <section class="detail-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Состав работ</div><h2>{e(service['section_title'])}</h2><p>{e(service['section_lead'])}</p></div><div class="{card_class}">{cards}</div></div></section>
 {special}
-    <section class="detail-section photo-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Фотографии</div><h2>Реальные проекты</h2><p>Подготовили места для фотографий выполненных работ по этой услуге.</p></div><div class="photo-placeholder-grid">{photos}</div></div></section>
-    <section class="detail-section price-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Стоимость</div><h2>Прайс</h2><p>Цены добавим после согласования прайса. Итоговая стоимость зависит от объёма и условий объекта.</p></div><div class="price-list">{prices}</div></div></section>
+    <section class="detail-section photo-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Фотографии</div><h2>Примеры работ</h2><p>{e(photo_intro)}</p></div><div class="service-photo-grid">{photos}</div>{'<p class="photo-credit">Фото газона: Priwo, Wikimedia Commons, общественное достояние.</p>' if service['slug'] == 'blagoustroystvo-uchastka' else ''}</div></section>
+    <section class="detail-section price-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Стоимость</div><h2>Пример прайса</h2><p class="demo-disclaimer">Цены ниже — демонстрационные для макета, не согласованный прайс компании. Итоговую стоимость рассчитаем после осмотра участка; суммы заменим после согласования с Кириллом.</p></div><div class="price-list">{prices}</div></div></section>
     <section class="detail-section"><div class="container"><div class="detail-section-head"><h2>Другие направления</h2><p>Соседние работы можно обсудить вместе с основной задачей.</p></div><div class="detail-links">{related}<a href="../services.html">Все услуги ↗</a></div></div></section>
     <section class="inner-cta"><div class="container"><h2>Обсудим ваш участок?</h2><a class="button button-lime" href="../index.html#request">Перейти к заявке <span aria-hidden="true">↗</span></a></div></section>
   </main>
   <footer class="site-footer"><div class="container"><span>© 2026 Тротуар_Про</span><span>Мощение и благоустройство территорий</span><a href="#top">Наверх ↑</a></div></footer>
   <script src="../script.js"></script>
+  <script src="../paver-types.js" defer></script>
 </body>
 </html>
 '''
