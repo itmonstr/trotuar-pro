@@ -87,22 +87,24 @@ DETAILS = {
 
 PHOTO_DATA = {
     'ukladka-plitki': [
-        ('../assets/projects/pavers-120/photo_06.webp', 'Брусчатка у бассейна'),
-        ('../assets/projects/large-format/photo_11.webp', 'Широкоформатная плитка'),
-        ('../assets/projects/old-town/photo_07.webp', 'Плитка «Старый город»'),
-        ('../assets/projects/pavers-80/photo_11.webp', 'Мощение двора'),
+        ('../assets/projects/pavers-120/photo_04.webp', 'Брусчатка у бассейна'),
+        ('../assets/projects/large-format/photo_07.webp', 'Широкоформатная плитка'),
+        ('../assets/projects/kultura/photo_01.webp', 'Мощение парковой территории'),
+        ('../assets/projects/pavers-80/photo_09.webp', 'Мощение двора'),
     ],
     'betonirovanie-dvorov': [
         (f'../assets/service-demos/concrete-{n}.webp', label)
-        for n, label in enumerate(('Подготовка и армирование', 'Заливка бетона', 'Выравнивание поверхности', 'Готовый бетонный двор'), 1)
+        for n, label in [(4, 'Готовый бетонный двор'), (3, 'Выравнивание поверхности'), (2, 'Заливка бетона'), (1, 'Подготовка и армирование')]
     ],
     'uhod-za-plitkoy': [
         (f'../assets/service-demos/care-{n}.webp', label)
-        for n, label in enumerate(('Мойка плитки', 'Нанесение защитного состава', 'Обновление швов', 'Удаление травы из швов'), 1)
+        for n, label in [(2, 'Нанесение защитного состава'), (3, 'Обновление швов'), (1, 'Мойка плитки'), (4, 'Удаление травы из швов')]
     ],
     'blagoustroystvo-uchastka': [
-        (f'../assets/service-demos/landscape-{n}.webp', label)
-        for n, label in enumerate(('Устройство дренажа', 'Ландшафтное освещение', 'Автоматический полив', 'Укладка рулонного газона'), 1)
+        ('../assets/service-demos/landscape-2.webp', 'Ландшафтное освещение'),
+        ('../assets/service-demos/landscape-3.webp', 'Автоматический полив'),
+        ('../assets/service-demos/lawn-installation.webp', 'Укладка рулонного газона'),
+        ('../assets/service-demos/landscape-1.webp', 'Устройство дренажа'),
     ],
 }
 
@@ -132,9 +134,9 @@ PRICE_DATA = {
 }
 
 PAVER_TYPES = [
-    ('Брусчатка 100 × 200', '../assets/projects/pavers-120/photo_06.webp', 'Прямоугольный формат для двора, дорожек и зоны у бассейна. Рисунок укладки подбираем под планировку участка.'),
-    ('Широкоформатная плитка', '../assets/projects/large-format/photo_11.webp', 'Крупные плиты создают спокойный рисунок покрытия. На одном из наших объектов использован формат 600 × 300 мм.'),
-    ('«Старый город»', '../assets/projects/old-town/photo_07.webp', 'Набор элементов разного размера даёт выразительный рисунок мощения. Это покрытие использовано на объекте площадью 200 м².'),
+    ('Брусчатка 100 × 200', '../assets/projects/pavers-120/photo_04.webp', 'Прямоугольный формат для двора, дорожек и зоны у бассейна. Рисунок укладки подбираем под планировку участка.'),
+    ('Широкоформатная плитка', '../assets/projects/large-format/photo_07.webp', 'Крупные плиты создают спокойный рисунок покрытия. На одном из наших объектов использован формат 600 × 300 мм.'),
+    ('«Старый город»', '../assets/projects/old-town/photo_06.webp', 'Набор элементов разного размера даёт выразительный рисунок мощения. Это покрытие использовано на объекте площадью 200 м².'),
 ]
 
 def render_paving_special():
@@ -186,7 +188,7 @@ def render(service):
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="../pages.css">
+  <link rel="stylesheet" href="../pages.css?v=service-photos2">
   <link rel="stylesheet" href="../responsive.css?v=20261001-mobile3">
 </head>
 <body>
