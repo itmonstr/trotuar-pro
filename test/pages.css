@@ -5,3 +5,4 @@
 @media(max-width:1000px){.additional-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.detail-cards,.detail-image-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:720px){.additional-services,.detail-intro,.detail-section{padding:65px 0}.detail-intro-grid{grid-template-columns:1fr;gap:30px}.detail-cards,.detail-image-grid{grid-template-columns:1fr}.detail-image-card img{height:250px}.additional-card{min-height:250px}.additional-card h3{margin-top:35px}}
 @media(max-width:470px){.additional-grid{grid-template-columns:1fr}.additional-card{min-height:215px}.service-detail-hero h1{font-size:3rem}}
+.additional-more{display:flex;justify-content:center;margin-top:36px}.additional-card:not(a):hover{transform:none;border-color:#d5ddd3}.detail-cards-four{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:720px){.detail-cards-four{grid-template-columns:1fr}}
