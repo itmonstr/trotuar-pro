@@ -30,7 +30,7 @@ SERVICES = [
             ('Подготовка', 'Согласуем необходимую подготовку перед бетонными работами.'),
             ('Бетонирование', 'Выполняем работы по согласованному решению и объёму.'),
         ],
-        'related': [('Укладка плитки', 'ukladka-plitki.html'), ('Дополнительные работы', 'dopolnitelnye-raboty.html')],
+        'related': [('Укладка плитки', 'ukladka-plitki.html'), ('Благоустройство участка', 'blagoustroystvo-uchastka.html')],
     },
     {
         'slug': 'uhod-za-plitkoy',
@@ -47,10 +47,10 @@ SERVICES = [
         'related': [('Укладка плитки', 'ukladka-plitki.html'), ('Все услуги', '../services.html')],
     },
     {
-        'slug': 'dopolnitelnye-raboty',
-        'title': 'Дополнительные работы для участка',
-        'lead': 'Дренаж, ландшафтное освещение, автоматический полив и укладка газона. Выбирайте нужные направления для вашего участка.',
-        'section_title': 'Что входит в раздел',
+        'slug': 'blagoustroystvo-uchastka',
+        'title': 'Благоустройство участка',
+        'lead': 'Дренаж, ландшафтное освещение, автоматический полив и укладка газона. Выбирайте нужные работы для вашего участка.',
+        'section_title': 'Направления благоустройства',
         'section_lead': 'Каждую задачу обсуждаем с учётом участка и того, какие работы вам нужны.',
         'items': [
             ('Дренаж и отвод воды', 'Система отвода воды с участка. Решение зависит от рельефа и условий на месте.'),
@@ -62,17 +62,43 @@ SERVICES = [
     },
 ]
 
+DETAILS = {
+    'ukladka-plitki': {
+        'about': 'Работа начинается с осмотра участка и выбора покрытия. Подготовка основания входит в укладку, а брусчатка, широкоформатная плитка и другие варианты подбираются под запрос. После согласования решения можно определить состав работ и стоимость.',
+        'photos': ['Готовое покрытие на объекте', 'Процесс укладки'],
+        'prices': ['Укладка на готовое основание', 'Укладка с подготовкой основания'],
+    },
+    'betonirovanie-dvorov': {
+        'about': 'Бетонирование подходит для дворов и площадок, где нужно бетонное покрытие. Перед расчётом осматриваем участок, уточняем площадь, назначение поверхности и объём подготовки.',
+        'photos': ['Готовый бетонный двор', 'Этап бетонных работ'],
+        'prices': ['Подготовка под бетонирование', 'Бетонирование двора'],
+    },
+    'uhod-za-plitkoy': {
+        'about': 'Уход помогает поддерживать готовое мощение в порядке. Выполняем мойку плитки, гидрофобную пропитку, засыпку швов кварцевым или модифицированным песком и удаление травы. Нужные работы выбираем по состоянию покрытия.',
+        'photos': ['Покрытие до ухода', 'Покрытие после ухода'],
+        'prices': ['Мойка плитки', 'Гидрофобная пропитка', 'Обновление швов', 'Удаление травы'],
+    },
+    'blagoustroystvo-uchastka': {
+        'about': 'В это направление входят четыре задачи: отвод воды с участка, ландшафтное освещение, автоматический полив и подготовка основания с укладкой газона. Их можно обсудить вместе или выбрать отдельные работы.',
+        'photos': ['Дренаж и отвод воды', 'Ландшафтное освещение', 'Автоматический полив', 'Уложенный газон'],
+        'prices': ['Дренаж и отвод воды', 'Ландшафтное освещение', 'Автоматический полив', 'Подготовка и укладка газона'],
+    },
+}
+
 def e(text):
     return escape(text, quote=True)
 
 def render(service):
     title = e(service['title'])
-    extra_ids = ['drenazh', 'osveshchenie', 'avtopoliv', 'gazon'] if service['slug'] == 'dopolnitelnye-raboty' else []
+    detail = DETAILS[service['slug']]
+    extra_ids = ['drenazh', 'osveshchenie', 'avtopoliv', 'gazon'] if service['slug'] == 'blagoustroystvo-uchastka' else []
     cards = ''
     for i, (name, body) in enumerate(service['items'], 1):
         id_attr = f' id="{extra_ids[i - 1]}"' if extra_ids else ''
         cards += f'<article class="detail-card"{id_attr}><span>{i:02d}</span><h3>{e(name)}</h3><p>{e(body)}</p></article>'
     related = ''.join(f'<a href="{e(href)}">{e(name)} ↗</a>' for name, href in service['related'])
+    photos = ''.join(f'<div class="photo-placeholder" role="img" aria-label="Место для фотографии: {e(label)}"><span>Фото реального проекта</span><strong>{e(label)}</strong><small>Добавим после согласования</small></div>' for label in detail['photos'])
+    prices = ''.join(f'<div class="price-row"><span>{e(label)}</span><strong>—</strong></div>' for label in detail['prices'])
     special = ''
     if service['slug'] == 'ukladka-plitki':
         special = '''
@@ -82,7 +108,7 @@ def render(service):
       <article class="detail-image-card"><img src="../assets/projects/old-town/photo_07.webp" alt="Плитка Старый город" loading="lazy"><div><h3>«Старый город»</h3><p>Пример покрытия площадью 200 м².</p></div></article>
     </div><p class="detail-note">Также можно обсудить уличный керамогранит и клинкерную брусчатку. Подбор покрытия зависит от запроса и условий участка.</p></div></section>
     <section class="detail-section" id="examples"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Реальные объекты</div><h2>Посмотрите результат</h2><p>В каталоге — шесть проектов с фотографиями, площадью и сроками работ.</p></div><a class="button button-lime" href="../projects.html">Смотреть проекты <span aria-hidden="true">↗</span></a></div></section>'''
-    card_class = 'detail-cards detail-cards-four' if service['slug'] == 'dopolnitelnye-raboty' else 'detail-cards'
+    card_class = 'detail-cards detail-cards-four' if service['slug'] == 'blagoustroystvo-uchastka' else 'detail-cards'
     return f'''<!doctype html>
 <html lang="ru">
 <head>
@@ -102,8 +128,11 @@ def render(service):
   <header class="site-header" id="top"><div class="container header-inner"><a class="brand" href="../index.html" aria-label="Тротуар Про — на главную"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Тротуар<span class="brand-accent">_</span>Про</span></a><nav class="main-nav" id="navigation" aria-label="Основная навигация"><a href="../services.html">Услуги</a><a href="../index.html#technology">Технология</a><a href="../index.html#process">Как работаем</a><a href="../projects.html">Проекты</a></nav><a class="header-cta" href="../index.html#request">Рассчитать стоимость <span aria-hidden="true">↗</span></a><button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="navigation"><span></span><span></span></button></div></header>
   <main>
     <section class="inner-hero service-detail-hero"><div class="container"><a class="service-back" href="../services.html">← Все услуги</a><div class="eyebrow lime"><span class="eyebrow-line"></span> Тротуар_Про</div><h1>{title}</h1><p>{e(service['lead'])}</p></div></section>
+    <section class="detail-intro"><div class="container detail-intro-grid"><div><div class="eyebrow"><span class="eyebrow-line"></span> Об услуге</div><h2>Что важно знать</h2></div><p>{e(detail['about'])}</p></div></section>
     <section class="detail-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Состав работ</div><h2>{e(service['section_title'])}</h2><p>{e(service['section_lead'])}</p></div><div class="{card_class}">{cards}</div></div></section>
 {special}
+    <section class="detail-section photo-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Фотографии</div><h2>Реальные проекты</h2><p>Подготовили места для фотографий выполненных работ по этой услуге.</p></div><div class="photo-placeholder-grid">{photos}</div></div></section>
+    <section class="detail-section price-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Стоимость</div><h2>Прайс</h2><p>Цены добавим после согласования прайса. Итоговая стоимость зависит от объёма и условий объекта.</p></div><div class="price-list">{prices}</div></div></section>
     <section class="detail-section"><div class="container"><div class="detail-section-head"><h2>Другие направления</h2><p>Соседние работы можно обсудить вместе с основной задачей.</p></div><div class="detail-links">{related}<a href="../services.html">Все услуги ↗</a></div></div></section>
     <section class="inner-cta"><div class="container"><h2>Обсудим ваш участок?</h2><a class="button button-lime" href="../index.html#request">Перейти к заявке <span aria-hidden="true">↗</span></a></div></section>
   </main>
@@ -118,14 +147,15 @@ for service in SERVICES:
 
 # Preserve links to the four earlier test pages while keeping one current page.
 LEGACY = {
+    'dopolnitelnye-raboty': '',
     'drenazh': 'drenazh',
     'landshaftnoe-osveshchenie': 'osveshchenie',
     'avtopoliv': 'avtopoliv',
     'ukladka-gazona': 'gazon',
 }
 for slug, anchor in LEGACY.items():
-    target = f'dopolnitelnye-raboty.html#{anchor}'
+    target = 'blagoustroystvo-uchastka.html' + (f'#{anchor}' if anchor else '')
     (OUT / f'{slug}.html').write_text(
-        f'<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta http-equiv="refresh" content="0; url={target}"><title>Дополнительные работы — Тротуар_Про</title></head><body><p><a href="{target}">Открыть дополнительные работы</a></p></body></html>\n',
+        f'<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta http-equiv="refresh" content="0; url={target}"><title>Благоустройство участка — Тротуар_Про</title></head><body><p><a href="{target}">Открыть благоустройство участка</a></p></body></html>\n',
         encoding='utf-8',
     )
