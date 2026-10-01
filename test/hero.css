@@ -4,9 +4,9 @@
   transform: none;
 }
 .hero-shade {
-  background: linear-gradient(90deg, rgba(13,29,23,.87), rgba(13,29,23,.66) 46%, rgba(13,29,23,.12)), linear-gradient(0deg, rgba(13,29,23,.52), transparent 40%);
+  background: linear-gradient(90deg, rgba(13,29,23,.90), rgba(13,29,23,.76) 46%, rgba(13,29,23,.48)), linear-gradient(0deg, rgba(13,29,23,.52), transparent 40%);
 }
 @media (max-width: 720px) {
   .hero-photo { background-position: 43% center; }
-  .hero-shade { background: linear-gradient(0deg, rgba(13,29,23,.94), rgba(13,29,23,.72) 48%, rgba(13,29,23,.15)); }
+  .hero-shade { background: linear-gradient(0deg, rgba(13,29,23,.95), rgba(13,29,23,.80) 48%, rgba(13,29,23,.45)); }
 }
