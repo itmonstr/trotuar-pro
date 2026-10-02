@@ -165,12 +165,28 @@ PAVING_PHOTO_GROUPS = [
     ],
 ]
 
+CONCRETE_PHOTO_GROUPS = [
+    [
+        ('../assets/service-concrete/concrete-stage-01-rebar.webp', 'Этап работ: армирование основания'),
+        ('../assets/service-concrete/concrete-stage-02-mixer.webp', 'Этап работ: подача бетона миксером'),
+        ('../assets/service-concrete/concrete-stage-03-pour.webp', 'Этап работ: заливка бетона'),
+        ('../assets/service-concrete/concrete-stage-04-pump.webp', 'Этап работ: работа бетононасоса'),
+    ],
+    [
+        ('../assets/service-concrete/concrete-finished-01-walkway.webp', 'Готовая бетонная дорожка'),
+        ('../assets/service-concrete/concrete-finished-02-yard.webp', 'Готовый бетонный двор'),
+        ('../assets/service-concrete/concrete-finished-03-courtyard.webp', 'Бетонная площадка во дворе'),
+        ('../assets/service-concrete/concrete-finished-04-commercial.webp', 'Готовая коммерческая площадка'),
+    ],
+]
+
 def render_photo_section(service, photos, photo_intro):
-    if service['slug'] != 'ukladka-plitki':
+    if service['slug'] not in {'ukladka-plitki', 'betonirovanie-dvorov'}:
         return f'<section class="detail-section photo-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Фотографии</div><h2>Фотографии и этапы работ</h2><p>{e(photo_intro)}</p></div><div class="service-photo-grid">{photos}</div></div></section>'
 
     groups = ''
-    for group in PAVING_PHOTO_GROUPS:
+    photo_groups = PAVING_PHOTO_GROUPS if service['slug'] == 'ukladka-plitki' else CONCRETE_PHOTO_GROUPS
+    for group in photo_groups:
         figures = ''.join(
             f'<figure class="service-photo"><img src="{e(src)}" alt="{e(label)}" loading="lazy"><figcaption><strong>{e(label)}</strong></figcaption></figure>'
             for src, label in group
@@ -232,7 +248,7 @@ def render(service):
   <footer class="site-footer"><div class="container"><span>© 2026 Тротуар_Про</span><span>Мощение и благоустройство территорий</span><a href="#top">Наверх ↑</a></div></footer>
   <script src="../script.js"></script>
   <script src="../paver-types.js" defer></script>
-  {'<script src="../service-photo-slider.js?v=1" defer></script>' if service['slug'] == 'ukladka-plitki' else ''}
+  {'<script src="../service-photo-slider.js?v=1" defer></script>' if service['slug'] in {'ukladka-plitki', 'betonirovanie-dvorov'} else ''}
 </body>
 </html>
 '''
