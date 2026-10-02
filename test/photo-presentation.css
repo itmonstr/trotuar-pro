@@ -1,0 +1,20 @@
+/* Preserve the photo frame; clip only embedded black rows. */
+.project-gallery{container-type:inline-size;background:#e9ede6}
+.project-track{height:min(calc(100cqw / var(--gallery-ratio,1.7777778)),620px);align-items:center}
+.project-slide{aspect-ratio:auto;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.project-slide::before{content:"";position:absolute;inset:-20px;background-image:var(--photo-preview);background-size:cover;background-position:center;filter:blur(18px);opacity:.3;pointer-events:none}
+.photo-window{display:block;position:relative;overflow:hidden;border:0;padding:0;margin:0 auto;background:#e9ede6;width:min(100%,calc(620px * var(--photo-ratio)));aspect-ratio:var(--photo-ratio);cursor:zoom-in}
+.project-slide .photo-window{max-height:100%}
+.photo-window img,.project-slide .photo-window img,.paver-panel .photo-window img{position:absolute;inset:auto;left:0;top:var(--photo-top,0%);width:100%;height:var(--photo-height,100%);max-height:none;aspect-ratio:auto;object-fit:fill;object-position:center;transform:none}
+.photo-window:focus-visible{outline:3px solid var(--lime);outline-offset:-3px}
+.project-photo-label{top:12px;left:12px;font-size:.73rem;padding:6px 9px;max-width:calc(100% - 24px)}
+.project-controls{position:relative;bottom:auto;right:auto;margin-left:auto;width:max-content;box-shadow:none}
+.project-progress{bottom:0}
+.projects-grid{align-items:start}
+.paver-panel .photo-window{width:100%;max-width:none}
+.photo-dialog{border:0;padding:54px 20px 20px;background:#14241f;color:#fff;max-width:96vw;max-height:94vh;overflow:auto}
+.photo-dialog::backdrop{background:#07100eef}
+.photo-dialog .photo-window{width:min(88vw,calc(76vh * var(--photo-ratio)),var(--photo-max-width,1600px));max-width:1600px;cursor:default}
+.photo-dialog-close{position:absolute;right:16px;top:10px;min-height:36px;border:1px solid #ffffff70;background:transparent;color:#fff;padding:5px 12px;cursor:pointer}
+.photo-dialog-caption{margin:12px 0 0;font-size:.85rem;color:#d5dfd8}
+@media(max-width:720px){.project-track{max-height:560px}.photo-window{width:min(100%,calc(560px * var(--photo-ratio)))}.photo-dialog{padding:52px 10px 14px}}
