@@ -15,6 +15,22 @@ SELECTION = {
  'private-yard': ('10', [5,1,6,2]), 'parquet': ('11', [1,2,3,4,5]),
  'gas-station': ('12', [7,6,8,2]),
 }
+EDITED = {
+ ('safari', 6): 'safari-cleaned.webp',
+ ('safari', 5): 'safari-cleaned-05.webp',
+ ('safari', 3): 'safari-cleaned-03.webp',
+ ('safari', 9): 'safari-cleaned-09.webp',
+ ('large-format', 7): 'large-format-cleaned-07.webp',
+ ('large-format', 6): 'large-format-cleaned-06.webp',
+ ('large-format', 10): 'large-format-cleaned-10.webp',
+ ('large-format', 1): 'large-format-cleaned-01.webp',
+ ('old-town', 7): 'old-town-cleaned-07.webp',
+ ('pavers-120', 4): 'pavers-120-cleaned-04.webp',
+ ('pavers-80', 9): 'pavers-80-cleaned-09.webp',
+ ('gas-station', 7): 'gas-station-cleaned-07.webp',
+ ('private-yard', 5): 'private-yard-cleaned-05.webp',
+ ('parquet', 5): 'parquet-cleaned-05.webp',
+}
 META = {}
 for slug,(prefix,numbers) in SELECTION.items():
     folder = next(SOURCE.glob(prefix+'_*'))
@@ -34,14 +50,23 @@ for slug,(prefix,numbers) in SELECTION.items():
 
 def photo(soup,slug,n,alt,prefix=''):
     m=META[slug,n]
+    edited_name = EDITED.get((slug,n))
+    edited = bool(edited_name and (ROOT/'test/assets/projects'/slug/edited_name).exists())
+    filename = edited_name if edited else f'original_{n:02}.jpg'
+    if edited:
+        with Image.open(ROOT/'test/assets/projects'/slug/filename) as im:
+            width,height=im.size
+        ratio=width/height; top=0; visible=height
+    else:
+        width,height=m['width'],m['height']; ratio=width/m['visible']; top=m['top']; visible=m['visible']
     frame=soup.new_tag('button',type='button')
     frame['class']='photo-window'
     frame['aria-label']='Увеличить: '+alt
-    frame['style']=(f'--photo-ratio:{m["width"]/m["visible"]:.7f};--photo-max-width:{m["width"]}px;'
-                    f'--photo-top:{-m["top"]/m["visible"]*100:.7f}%;'
-                    f'--photo-height:{m["height"]/m["visible"]*100:.7f}%')
-    frame.append(soup.new_tag('img',src=f'{prefix}assets/projects/{slug}/original_{n:02}.jpg',
-        alt=alt,width=str(m['width']),height=str(m['height']),loading='lazy',decoding='async'))
+    frame['style']=(f'--photo-ratio:{ratio:.7f};--photo-max-width:{width}px;'
+                    f'--photo-top:{-top/visible*100:.7f}%;'
+                    f'--photo-height:{height/visible*100:.7f}%')
+    frame.append(soup.new_tag('img',src=f'{prefix}assets/projects/{slug}/{filename}',
+        alt=alt,width=str(width),height=str(height),loading='lazy',decoding='async'))
     return frame
 
 def curate(match):
@@ -52,11 +77,18 @@ def curate(match):
     for i,n in enumerate(numbers,1):
         slide=soup.new_tag('div',role='group')
         slide['class']='project-slide'; slide['aria-label']=f'Фото {i} из {len(numbers)}'
-        slide['style']=f'--photo-preview:url("assets/projects/{slug}/original_{n:02}.jpg")'
+        edited_name = EDITED.get((slug,n))
+        preview = edited_name if edited_name and (ROOT/'test/assets/projects'/slug/edited_name).exists() else f'original_{n:02}.jpg'
+        slide['style']=f'--photo-preview:url("assets/projects/{slug}/{preview}")'
         slide.append(photo(soup,slug,n,soup.h3.get_text()+f' — фото {i}'))
         track.append(slide)
-    m=META[slug,numbers[0]]
-    soup.select_one('.project-gallery')['style']=f'--gallery-ratio:{m["width"]/m["visible"]:.7f}'
+    first_edited = EDITED.get((slug,numbers[0]))
+    if first_edited and (ROOT/'test/assets/projects'/slug/first_edited).exists():
+        with Image.open(ROOT/'test/assets/projects'/slug/first_edited) as im:
+            gallery_ratio=im.width/im.height
+    else:
+        m=META[slug,numbers[0]]; gallery_ratio=m['width']/m['visible']
+    soup.select_one('.project-gallery')['style']=f'--gallery-ratio:{gallery_ratio:.7f}'
     soup.select_one('.project-photo-label').string=f'{len(numbers)} фото · нажмите для увеличения'
     soup.select_one('.project-counter').string=f'01 / {len(numbers):02}'
     return str(soup)
