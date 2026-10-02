@@ -15,3 +15,7 @@
 .paver-panel img[src*="old-town"]{aspect-ratio:16/9;object-position:center 53%}
 .detail-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.detail-card{padding:32px}.detail-card p{line-height:1.75}.detail-card span{margin-bottom:24px}.detail-section.cost-section{background:#e9ede6}.cost-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.cost-factor{background:#fff;padding:30px;min-width:0;border:1px solid #d5ddd3}.cost-factor>span{display:block;color:#608464;font-size:.8rem;font-weight:800;margin-bottom:20px}.cost-factor h3{font-size:1.5rem;margin-bottom:14px}.cost-factor p{margin:0;line-height:1.7}.cost-summary{display:flex;align-items:center;justify-content:space-between;gap:32px;margin-top:28px;padding:30px;background:var(--forest);color:#fff}.cost-summary p{color:#dce7df;margin:0;max-width:710px}.cost-summary strong{display:block;color:#fff;margin-bottom:8px}.cost-summary .button{flex-shrink:0}.additional-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.additional-card h3{margin-top:28px}
 @media(max-width:720px){.detail-cards,.cost-grid,.additional-grid{grid-template-columns:1fr}.detail-card,.cost-factor{padding:24px}.cost-summary{align-items:stretch;flex-direction:column;padding:24px;gap:22px}.cost-summary .button{width:100%}}
+.cost-column{display:flex;flex-direction:column;gap:16px}
+.cost-column .cost-factor{display:flex;gap:30px;align-items:flex-start}
+.cost-column .cost-factor>span{margin:0;font-size:2rem;opacity:0.3;line-height:1}
+@media(max-width:720px){.cost-column .cost-factor{flex-direction:column;gap:16px}}
