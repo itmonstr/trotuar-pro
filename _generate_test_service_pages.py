@@ -150,6 +150,35 @@ def render_paving_special():
 def e(text):
     return escape(text, quote=True)
 
+PAVING_PHOTO_GROUPS = [
+    [
+        ('../assets/projects/kultura/photo_01_grid.webp', 'Мощение базы отдыха'),
+        ('../assets/projects/kultura/photo_09_grid.webp', 'Готовое покрытие'),
+        ('../assets/projects/safari/safari-cleaned.webp', 'Сафари Парк'),
+        ('../assets/projects/old-town/photo_06_grid.webp', 'Плитка «Старый город»'),
+    ],
+    [
+        ('../assets/service-paving/paving-extra-01.webp', 'Готовое мощение двора'),
+        ('../assets/service-paving/paving-extra-02-cleaned.webp', 'Декоративная укладка плитки'),
+        ('../assets/service-paving/paving-extra-03-stage.webp', 'Этап работ: устройство водоотведения'),
+        ('../assets/service-paving/paving-extra-04-stage.webp', 'Этап работ: подготовка основания и бордюров'),
+    ],
+]
+
+def render_photo_section(service, photos, photo_intro):
+    if service['slug'] != 'ukladka-plitki':
+        return f'<section class="detail-section photo-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Фотографии</div><h2>Фотографии и этапы работ</h2><p>{e(photo_intro)}</p></div><div class="service-photo-grid">{photos}</div></div></section>'
+
+    groups = ''
+    for group in PAVING_PHOTO_GROUPS:
+        figures = ''.join(
+            f'<figure class="service-photo"><img src="{e(src)}" alt="{e(label)}" loading="lazy"><figcaption><strong>{e(label)}</strong></figcaption></figure>'
+            for src, label in group
+        )
+        groups += f'<div class="slide-group"><div class="service-photo-grid">{figures}</div></div>'
+
+    return f'<section class="detail-section photo-section" data-photo-slider><div class="container"><div class="detail-section-head slider-head"><div class="slider-head-content"><div class="eyebrow"><span class="eyebrow-line"></span> Фотографии</div><h2>Фотографии и этапы работ</h2><p>{e(photo_intro)}</p></div><div class="slider-controls"><button class="slider-btn prev-btn" type="button" aria-label="Предыдущая группа фотографий">←</button><button class="slider-btn next-btn" type="button" aria-label="Следующая группа фотографий">→</button></div></div><div class="slider-container"><div class="slider-track">{groups}</div></div></div></section>'
+
 def render(service):
     title = e(service['title'])
     detail = DETAILS[service['slug']]
@@ -165,6 +194,7 @@ def render(service):
         f'<figure class="service-photo"><img src="{e(src)}" alt="{e(label)}" loading="lazy"><figcaption><strong>{e(label)}</strong></figcaption></figure>'
         for src, label in PHOTO_DATA[service['slug']]
     )
+    photo_section = render_photo_section(service, photos, photo_intro)
     cost_factors = ''.join(
         f'<article class="cost-factor"><span>{i:02d}</span><h3>{e(label)}</h3><p>{e(body)}</p></article>'
         for i, (label, body) in enumerate(detail['cost_factors'], 1)
@@ -194,7 +224,7 @@ def render(service):
     <section class="detail-intro"><div class="container detail-intro-grid"><div><div class="eyebrow"><span class="eyebrow-line"></span> Об услуге</div><h2>Что важно знать</h2></div><p>{e(detail['about'])}</p></div></section>
     <section class="detail-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Состав работ</div><h2>{e(service['section_title'])}</h2><p>{e(service['section_lead'])}</p></div><div class="{card_class}">{cards}</div></div></section>
 {special}
-    <section class="detail-section photo-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Фотографии</div><h2>Фотографии и этапы работ</h2><p>{e(photo_intro)}</p></div><div class="service-photo-grid">{photos}</div></div></section>
+    {photo_section}
     <section class="detail-section cost-section"><div class="container"><div class="detail-section-head"><div class="eyebrow"><span class="eyebrow-line"></span> Расчёт</div><h2>Из чего складывается стоимость</h2><p>Одинаковых участков не бывает, поэтому рассчитываем работу после осмотра и замеров.</p></div><div class="cost-grid">{cost_factors}</div><div class="cost-summary"><p><strong>Подготовим понятную смету.</strong> После осмотра согласуем состав работ и материалы, затем зафиксируем стоимость в смете и договоре.</p><a class="button button-lime" href="../index.html#request">Получить расчёт <span aria-hidden="true">↗</span></a></div></div></section>
     <section class="detail-section"><div class="container"><div class="detail-section-head"><h2>Другие направления</h2><p>Соседние работы можно обсудить вместе с основной задачей.</p></div><div class="detail-links">{related}<a href="../services.html">Все услуги ↗</a></div></div></section>
     <section class="inner-cta"><div class="container"><h2>Обсудим ваш участок?</h2><a class="button button-lime" href="../index.html#request">Перейти к заявке <span aria-hidden="true">↗</span></a></div></section>
@@ -202,6 +232,7 @@ def render(service):
   <footer class="site-footer"><div class="container"><span>© 2026 Тротуар_Про</span><span>Мощение и благоустройство территорий</span><a href="#top">Наверх ↑</a></div></footer>
   <script src="../script.js"></script>
   <script src="../paver-types.js" defer></script>
+  {'<script src="../service-photo-slider.js?v=1" defer></script>' if service['slug'] == 'ukladka-plitki' else ''}
 </body>
 </html>
 '''
