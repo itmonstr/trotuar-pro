@@ -1,0 +1,67 @@
+.projects { background: var(--paper); }
+.projects-heading { align-items: flex-end; }
+.projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; }
+.project-card { min-width: 0; background: #fff; border: 1px solid #dbe2d8; }
+.project-gallery { position: relative; overflow: hidden; background: var(--ink); }
+.project-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+.project-track::-webkit-scrollbar { display: none; }
+.project-slide { flex: 0 0 100%; min-width: 0; aspect-ratio: 4 / 3; scroll-snap-align: start; scroll-snap-stop: always; }
+.project-slide img { width: 100%; height: 100%; object-fit: contain; }
+.project-photo-label { position: absolute; top: 20px; left: 20px; padding: 7px 12px; background: #14241fe6; color: #fff; font-size: .875rem; pointer-events: none; }
+.project-controls { position: absolute; bottom: 20px; right: 20px; display: flex; align-items: center; background: #fff; color: var(--ink); box-shadow: 0 3px 15px #0002; }
+.project-controls button { display: grid; place-items: center; border: 0; background: transparent; color: inherit; width: 48px; height: 48px; font-size: 1.4rem; transition: background .15s; }
+.project-controls button:hover { background: var(--lime); }
+.project-counter { min-width: 65px; text-align: center; font-variant-numeric: tabular-nums; font-size: .875rem; font-weight: 800; }
+.project-progress { position: absolute; height: 3px; bottom: 0; left: 0; width: 100%; background: #ffffff38; pointer-events: none; }
+.project-progress span { display: block; height: 100%; background: var(--lime); transition: width .2s; }
+.project-details { padding: 28px 30px 30px; }
+.project-kicker { display: flex; justify-content: space-between; align-items: baseline; gap: 15px; margin-bottom: 16px; color: #53715e; font-size: .875rem; }
+.project-kicker span:last-child { white-space: nowrap; font-variant-numeric: tabular-nums; color: #6b7b71; }
+.project-details h3 { font-size: clamp(1.5rem, 2.6vw, 2.35rem); margin-bottom: 14px; }
+.project-details > p { margin-bottom: 26px; color: var(--muted); font-size: 1rem; min-height: 3.2em; }
+.project-facts { margin: 0; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #dbe2d8; padding-top: 20px; }
+.project-facts > div + div { border-left: 1px solid #dbe2d8; padding-left: 28px; }
+.project-facts dt { font-size: .875rem; color: var(--muted); margin-bottom: 5px; }
+.project-facts dd { margin: 0; font-size: clamp(1.45rem, 2.3vw, 2rem); font-weight: 800; line-height: 1.3; letter-spacing: -.04em; }
+.project-facts dd span { font-size: 1rem; font-weight: 600; }
+.project-track:focus-visible { outline: 3px solid var(--lime); outline-offset: -5px; }
+.project-controls button:focus-visible { outline: 3px solid var(--forest-2); outline-offset: -4px; }
+@media (min-width: 1001px) and (max-width: 1180px) { .header-inner { gap: 16px; } .main-nav { gap: 18px; } .header-cta { padding-inline: 12px; } }
+@media (max-width: 760px) {
+  .projects-grid { grid-template-columns: 1fr; gap: 28px; }
+  .project-details { padding: 24px; }
+  .project-details h3 { font-size: 1.8rem; }
+  .project-details > p { min-height: 0; }
+  .project-facts dd { font-size: 1.7rem; }
+}
+@media (max-width: 420px) {
+  .project-details { padding: 20px; }
+  .project-photo-label { top: 12px; left: 12px; }
+  .project-controls { right: 12px; bottom: 12px; }
+  .project-facts > div + div { padding-left: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .project-progress span { transition: none; } }
+
+/* A short, user-controlled story for the pool project. */
+.process-play { position: absolute; z-index: 4; top: 50%; left: 50%; transform: translate(-50%, -50%) translateY(6px); display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 9px 19px 9px 10px; border: 1px solid #ffffff80; border-radius: 40px; background: #14241fe8; color: #fff; box-shadow: 0 6px 25px #0003; backdrop-filter: blur(8px); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s, background .2s; white-space: nowrap; }
+.process-play-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--lime); color: var(--ink); font-size: 16px; }
+.process-play-label { font-size: .875rem; font-weight: 700; }
+.has-process:hover .process-play, .has-process:focus-within .process-play, .process-is-active .process-play { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%); }
+.process-play:hover { background: var(--forest); }
+.process-play:focus-visible { outline: 3px solid var(--lime); outline-offset: 4px; }
+.process-is-playing .process-play { top: 16px; right: 16px; left: auto; transform: none; min-height: 44px; padding: 5px 12px 5px 5px; }
+.process-is-playing .process-play-icon { width: 32px; height: 32px; }
+.process-player { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: var(--ink); }
+.process-player[hidden] { display: none; }
+.process-frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .65s ease-in-out; }
+.process-frame.is-visible { opacity: 1; }
+.process-player-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 42px 20px 18px; background: linear-gradient(transparent, #14241ff5); color: #fff; }
+.process-stage { display: block; font-size: .875rem; font-weight: 600; line-height: 1.5; }
+.process-timeline { display: flex; gap: 5px; margin-top: 13px; }
+.process-timeline i { flex: 1; height: 3px; background: #ffffff50; }
+.process-timeline i.is-complete { background: var(--lime); }
+.process-is-active .project-controls { z-index: 3; top: 16px; left: 16px; right: auto; bottom: auto; }
+.process-is-active .project-controls button { width: 38px; height: 44px; }
+.process-is-active .project-counter { display: none; }
+@media (hover: none), (pointer: coarse) { .process-play { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%); } .process-is-playing .process-play { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .process-frame, .process-play { transition: none; } }
