@@ -41,6 +41,10 @@ EDITED = {
  ('private-yard', 1): 'private-yard-cleaned-01.webp',
  ('private-yard', 6): 'private-yard-cleaned-06.webp',
  ('private-yard', 2): 'private-yard-cleaned-02.webp',
+ ('parquet', 1): 'parquet-cleaned-01.webp',
+ ('parquet', 2): 'parquet-cleaned-02.webp',
+ ('parquet', 3): 'parquet-cleaned-03.webp',
+ ('parquet', 4): 'parquet-cleaned-04.webp',
  ('parquet', 5): 'parquet-cleaned-05.webp',
 }
 META = {}
