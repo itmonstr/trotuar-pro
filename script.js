@@ -12,6 +12,7 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   menuButton.setAttribute('aria-label', 'Открыть меню');
 }));
 const form = document.querySelector('#request-form');
+if (form) {
 form.addEventListener('submit', event => {
   event.preventDefault();
   const data = new FormData(form);
@@ -23,3 +24,4 @@ document.querySelector('.copy-button').addEventListener('click', async event => 
   try { await navigator.clipboard.writeText(document.querySelector('#request-text').value); event.currentTarget.textContent = 'Скопировано'; }
   catch { document.querySelector('#request-text').select(); event.currentTarget.textContent = 'Выделено — скопируйте текст'; }
 });
+}

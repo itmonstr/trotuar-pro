@@ -1,0 +1,170 @@
+/* Отзывы: Хаотичная "Masonry" плитка с горизонтальным скроллом */
+.reviews-section {
+  padding: 80px 0;
+  background: var(--surface, #f8f9fa);
+  overflow: hidden;
+  user-select: none;
+}
+
+.reviews-head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.reviews-slider-wrap {
+  position: relative;
+  width: 100%;
+  /* Убираем max-width, чтобы лента тянулась на весь экран */
+}
+
+.reviews-track {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  height: 950px; /* Увеличил высоту для крупных карточек */
+  gap: 24px;
+  padding: 40px calc((100vw - 1200px) / 2); /* Отступы, чтобы начиналось по сетке контейнера */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  cursor: grab;
+}
+
+.reviews-track:active {
+  cursor: grabbing;
+}
+
+.reviews-track::-webkit-scrollbar {
+  display: none;
+}
+
+.review-card {
+  width: 380px; /* Карточки стали крупнее */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Эффект легкой хаотичности (Masonry) за счет смещения четных/нечетных колонок */
+.review-card:nth-child(even) {
+  margin-top: 40px;
+}
+.review-card:nth-child(3n) {
+  margin-top: -20px;
+}
+.review-card:nth-child(5n) {
+  margin-top: 20px;
+}
+
+.review-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.review-img-wrap {
+  position: relative;
+  width: 100%;
+  cursor: zoom-in;
+}
+
+.review-img-wrap img {
+  width: 100%;
+  height: auto; /* Полный размер скриншота без обрезки */
+  display: block;
+  pointer-events: none; /* Чтобы не мешать drag-and-drop */
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-modal img {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lightbox-modal.active img {
+  transform: scale(1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 36px;
+  line-height: 1;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Скрываем кнопки навигации, так как теперь есть drag-and-drop */
+.review-nav {
+  display: none;
+}
+
+@media (max-width: 1240px) {
+  .reviews-track {
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-track {
+    height: 750px; /* Выше для мобильных с крупными карточками */
+    gap: 16px;
+  }
+  .review-card {
+    width: 320px; /* Крупнее на телефонах */
+  }
+  .review-card:nth-child(even),
+  .review-card:nth-child(3n),
+  .review-card:nth-child(5n) {
+    margin-top: 0; /* На мобильных отключаем сильный разброс для экономии места */
+  }
+  /* Добавляем легкое смещение только для второго ряда, если он есть */
+  .review-card:nth-child(even) {
+    margin-left: 20px;
+  }
+}

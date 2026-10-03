@@ -1,0 +1,247 @@
+{
+  "kultura/original_01.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "01_База_отдыха_Культура\\photo_01.jpg"
+  },
+  "kultura/original_07.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "01_База_отдыха_Культура\\photo_07.jpg"
+  },
+  "kultura/original_09.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "01_База_отдыха_Культура\\photo_09.jpg"
+  },
+  "kultura/original_06.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "01_База_отдыха_Культура\\photo_06.jpg"
+  },
+  "safari/original_06.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "02_Сафари_Парк_Краснодар\\photo_06.jpg"
+  },
+  "safari/original_05.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "02_Сафари_Парк_Краснодар\\photo_05.jpg"
+  },
+  "safari/original_03.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "02_Сафари_Парк_Краснодар\\photo_03.jpg"
+  },
+  "safari/original_09.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "02_Сафари_Парк_Краснодар\\photo_09.jpg"
+  },
+  "large-format/original_07.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "03_Широкоформатная_плитка_600х300_Краснодар\\photo_07.jpg"
+  },
+  "large-format/original_06.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "03_Широкоформатная_плитка_600х300_Краснодар\\photo_06.jpg"
+  },
+  "large-format/original_10.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "03_Широкоформатная_плитка_600х300_Краснодар\\photo_10.jpg"
+  },
+  "large-format/original_01.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "03_Широкоформатная_плитка_600х300_Краснодар\\photo_01.jpg"
+  },
+  "old-town/original_06.jpg": {
+    "width": 871,
+    "height": 1280,
+    "top": 332,
+    "visible": 493,
+    "source": "04_Плитка_старый_город_200кв\\photo_06.jpg"
+  },
+  "old-town/original_07.jpg": {
+    "width": 872,
+    "height": 1280,
+    "top": 294,
+    "visible": 541,
+    "source": "04_Плитка_старый_город_200кв\\photo_07.jpg"
+  },
+  "pavers-120/original_04.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "05_Брусчатка_100х200_120кв\\photo_04.jpg"
+  },
+  "pavers-120/original_05.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "05_Брусчатка_100х200_120кв\\photo_05.jpg"
+  },
+  "pavers-120/original_03.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "05_Брусчатка_100х200_120кв\\photo_03.jpg"
+  },
+  "pavers-80/original_09.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "06_Брусчатка_100х200_80кв\\photo_09.jpg"
+  },
+  "pavers-80/original_08.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "06_Брусчатка_100х200_80кв\\photo_08.jpg"
+  },
+  "pavers-80/original_01.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "06_Брусчатка_100х200_80кв\\photo_01.jpg"
+  },
+  "pavers-80/original_07.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "06_Брусчатка_100х200_80кв\\photo_07.jpg"
+  },
+  "pavers-80/original_11.jpg": {
+    "width": 1280,
+    "height": 720,
+    "top": 0,
+    "visible": 720,
+    "source": "06_Брусчатка_100х200_80кв\\photo_11.jpg"
+  },
+  "private-yard/original_05.jpg": {
+    "width": 886,
+    "height": 1920,
+    "top": 710,
+    "visible": 501,
+    "source": "10_Частный_двор\\photo_05.jpg"
+  },
+  "private-yard/original_01.jpg": {
+    "width": 886,
+    "height": 1920,
+    "top": 710,
+    "visible": 500,
+    "source": "10_Частный_двор\\photo_01.jpg"
+  },
+  "private-yard/original_06.jpg": {
+    "width": 886,
+    "height": 1920,
+    "top": 710,
+    "visible": 501,
+    "source": "10_Частный_двор\\photo_06.jpg"
+  },
+  "private-yard/original_02.jpg": {
+    "width": 886,
+    "height": 1920,
+    "top": 709,
+    "visible": 502,
+    "source": "10_Частный_двор\\photo_02.jpg"
+  },
+  "parquet/original_01.jpg": {
+    "width": 1440,
+    "height": 1920,
+    "top": 0,
+    "visible": 1920,
+    "source": "11_Тротуарная_плитка_Паркет\\photo_01.jpg"
+  },
+  "parquet/original_02.jpg": {
+    "width": 1440,
+    "height": 1920,
+    "top": 0,
+    "visible": 1920,
+    "source": "11_Тротуарная_плитка_Паркет\\photo_02.jpg"
+  },
+  "parquet/original_03.jpg": {
+    "width": 1440,
+    "height": 1920,
+    "top": 0,
+    "visible": 1920,
+    "source": "11_Тротуарная_плитка_Паркет\\photo_03.jpg"
+  },
+  "parquet/original_04.jpg": {
+    "width": 1440,
+    "height": 1920,
+    "top": 0,
+    "visible": 1920,
+    "source": "11_Тротуарная_плитка_Паркет\\photo_04.jpg"
+  },
+  "parquet/original_05.jpg": {
+    "width": 1440,
+    "height": 1920,
+    "top": 0,
+    "visible": 1920,
+    "source": "11_Тротуарная_плитка_Паркет\\photo_05.jpg"
+  },
+  "gas-station/original_07.jpg": {
+    "width": 1080,
+    "height": 1920,
+    "top": 0,
+    "visible": 1920,
+    "source": "12_Заправочная_станция_Яблуновка\\photo_07.jpg"
+  },
+  "gas-station/original_06.jpg": {
+    "width": 1080,
+    "height": 1920,
+    "top": 0,
+    "visible": 1920,
+    "source": "12_Заправочная_станция_Яблуновка\\photo_06.jpg"
+  },
+  "gas-station/original_08.jpg": {
+    "width": 1080,
+    "height": 1920,
+    "top": 0,
+    "visible": 1920,
+    "source": "12_Заправочная_станция_Яблуновка\\photo_08.jpg"
+  },
+  "gas-station/original_02.jpg": {
+    "width": 1080,
+    "height": 1920,
+    "top": 0,
+    "visible": 1920,
+    "source": "12_Заправочная_станция_Яблуновка\\photo_02.jpg"
+  }
+}

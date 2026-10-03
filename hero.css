@@ -1,0 +1,15 @@
+.hero-photo {
+  background-image: url('assets/hero-stone-greenery-desktop.webp');
+  background-position: center;
+  transform: none;
+}
+.hero-shade {
+  background: linear-gradient(90deg, rgba(13,29,23,.90), rgba(13,29,23,.76) 46%, rgba(13,29,23,.48)), linear-gradient(0deg, rgba(13,29,23,.52), transparent 40%);
+}
+@media (max-width: 720px) {
+  .hero-photo {
+    background-image: url('assets/hero-stone-greenery.jpeg');
+    background-position: 43% center;
+  }
+  .hero-shade { background: linear-gradient(0deg, rgba(13,29,23,.95), rgba(13,29,23,.80) 48%, rgba(13,29,23,.45)); }
+}

@@ -2,11 +2,22 @@
 .projects-heading { align-items: flex-end; }
 .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; }
 .project-card { min-width: 0; background: #fff; border: 1px solid #dbe2d8; }
+.projects-more { display: flex; justify-content: center; margin-top: 42px; }
+.service-grid-four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.service-grid-four .card-large { grid-column: span 1; }
+.service-grid-four .service-card { min-width: 0; min-height: 360px; aspect-ratio: 3 / 2; }
+.service-grid-four .service-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.service-grid-four .service-card { display: grid; }
+.service-grid-four .service-overlay { position: relative; min-width: 0; gap: 80px; }
+.service-grid-four .service-overlay > div { min-width: 0; }
+.service-grid-four h3 { overflow-wrap: anywhere; }
+.service-card-plain { background: radial-gradient(circle at 80% 20%, #58765f 0, transparent 40%), linear-gradient(135deg, #173b30, #14241f); }
+.service-card-plain:after { background: linear-gradient(0deg, rgba(10,23,18,.4), transparent); }
 .project-gallery { position: relative; overflow: hidden; background: var(--ink); }
 .project-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
 .project-track::-webkit-scrollbar { display: none; }
-.project-slide { flex: 0 0 100%; min-width: 0; aspect-ratio: 4 / 3; scroll-snap-align: start; scroll-snap-stop: always; }
-.project-slide img { width: 100%; height: 100%; object-fit: contain; }
+.project-slide { position: relative; flex: 0 0 100%; min-width: 0; aspect-ratio: 16 / 9; scroll-snap-align: start; scroll-snap-stop: always; }
+.project-slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .project-photo-label { position: absolute; top: 20px; left: 20px; padding: 7px 12px; background: #14241fe6; color: #fff; font-size: .875rem; pointer-events: none; }
 .project-controls { position: absolute; bottom: 20px; right: 20px; display: flex; align-items: center; background: #fff; color: var(--ink); box-shadow: 0 3px 15px #0002; }
 .project-controls button { display: grid; place-items: center; border: 0; background: transparent; color: inherit; width: 48px; height: 48px; font-size: 1.4rem; transition: background .15s; }
@@ -28,6 +39,11 @@
 .project-controls button:focus-visible { outline: 3px solid var(--forest-2); outline-offset: -4px; }
 @media (min-width: 1001px) and (max-width: 1180px) { .header-inner { gap: 16px; } .main-nav { gap: 18px; } .header-cta { padding-inline: 12px; } }
 @media (max-width: 760px) {
+  .service-grid-four { grid-template-columns: minmax(0, 1fr); }
+  .service-grid-four .service-card { min-height: 300px; aspect-ratio: 16 / 10; }
+  .service-grid-four .service-overlay { padding: 24px; }
+  .service-grid-four h3 { font-size: clamp(1.45rem, 6vw, 1.9rem); line-height: 1.16; }
+  .service-grid-four p { font-size: .9rem; line-height: 1.5; }
   .projects-grid { grid-template-columns: 1fr; gap: 28px; }
   .project-details { padding: 24px; }
   .project-details h3 { font-size: 1.8rem; }
@@ -35,6 +51,7 @@
   .project-facts dd { font-size: 1.7rem; }
 }
 @media (max-width: 420px) {
+  .service-grid-four .service-card { min-height: 330px; aspect-ratio: auto; }
   .project-details { padding: 20px; }
   .project-photo-label { top: 12px; left: 12px; }
   .project-controls { right: 12px; bottom: 12px; }
@@ -53,7 +70,7 @@
 .process-is-playing .process-play-icon { width: 32px; height: 32px; }
 .process-player { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: var(--ink); }
 .process-player[hidden] { display: none; }
-.process-frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .65s ease-in-out; }
+.process-frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .65s ease-in-out; }
 .process-frame.is-visible { opacity: 1; }
 .process-player-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 42px 20px 18px; background: linear-gradient(transparent, #14241ff5); color: #fff; }
 .process-stage { display: block; font-size: .875rem; font-weight: 600; line-height: 1.5; }
@@ -65,3 +82,17 @@
 .process-is-active .project-counter { display: none; }
 @media (hover: none), (pointer: coarse) { .process-play { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%); } .process-is-playing .process-play { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .process-frame, .process-play { transition: none; } }
+
+/* Center the photographic area in source files with embedded black bars. */
+.project-slide img[src="assets/projects/old-town/photo_04.webp"] { transform: scale(1.04); transform-origin: center top; }
+.project-slide img[src="assets/projects/old-town/photo_01.webp"] { object-position: center 64.74%; }
+.project-slide img[src="assets/projects/old-town/photo_02.webp"] { object-position: center 88.48%; }
+.project-slide img[src="assets/projects/old-town/photo_03.webp"] { object-position: center 38.00%; }
+.project-slide img[src="assets/projects/old-town/photo_05.webp"] { object-position: center 56.38%; }
+.project-slide img[src="assets/projects/old-town/photo_06.webp"] { object-position: center 42.34%; }
+.project-slide img[src="assets/projects/old-town/photo_07.webp"] { object-position: center 40.44%; }
+.project-slide img[src="assets/projects/pavers-80/photo_02.webp"] { object-position: center 52.76%; }
+.project-slide img[src="assets/projects/pavers-80/photo_03.webp"] { object-position: center 50.95%; }
+.project-slide img[src="assets/projects/pavers-80/photo_04.webp"] { object-position: center 51.86%; }
+.project-slide img[src="assets/projects/pavers-80/photo_05.webp"] { object-position: center 36.76%; }
+.project-slide img[src="assets/projects/pavers-80/photo_06.webp"] { object-position: center 31.14%; }
