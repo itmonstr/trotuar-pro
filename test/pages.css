@@ -61,3 +61,7 @@
   .slider-controls { padding-bottom: 0; padding-top: 10px; }
   .slider-container { margin-top: 25px; }
 }
+
+.paver-accordion-content { padding: 0 30px 25px; }
+.paver-accordion-content img { width: 100%; height: auto; border-radius: 12px; margin-top: 20px; object-fit: cover; aspect-ratio: 16/9; }
+@media(max-width: 720px) { .paver-accordion-content { padding: 0 0 20px; } }
