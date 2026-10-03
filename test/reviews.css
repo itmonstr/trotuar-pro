@@ -11,6 +11,38 @@
   margin-bottom: 40px;
 }
 
+.reviews-swipe-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 8px 14px;
+  border: 1px solid #d5ddd3;
+  border-radius: 999px;
+  background: #fff;
+  color: #365247;
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.reviews-swipe-hand {
+  display: inline-block;
+  font-size: 1.15rem;
+  line-height: 1;
+  animation: reviews-swipe 1.8s ease-in-out infinite;
+}
+
+.reviews-swipe-arrow { font-size: 1.1rem; line-height: 1; }
+
+@keyframes reviews-swipe {
+  0%, 100% { transform: translateX(-5px); }
+  50% { transform: translateX(7px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-swipe-hand { animation: none; }
+}
+
 .reviews-slider-wrap {
   position: relative;
   width: 100%;
