@@ -1,2 +1,10 @@
 .technology .tech-layout{align-items:start}.technology .tech-points{margin-top:30px}.technology .tech-points>div{align-items:start;gap:18px;padding:22px 0}.technology .tech-points>div>span{padding-top:3px}.technology .tech-points strong{display:block;font-size:1.08rem;color:#fff;margin-bottom:8px}.technology .tech-points p{font-size:.93rem;color:#c6d4ca;margin:0;line-height:1.7}.technology .tech-visual{position:sticky;top:100px}.technology .tech-link{margin-top:28px;color:var(--lime)}
 @media(max-width:720px){.technology .tech-visual{position:relative;top:auto;margin-top:30px}.technology .tech-points strong{font-size:1rem}}
+.technology .tech-layout{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:44px 6%;align-items:center}
+.technology .tech-copy h2{font-size:clamp(2.3rem,3.7vw,3.7rem);max-width:660px;line-height:1.12;text-wrap:balance}
+.technology .tech-visual{position:relative;top:auto;height:420px;min-width:0}
+.technology .tech-points{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:0;border-top:1px solid #ffffff36}
+.technology .tech-points>div{border-bottom:0;padding:26px 0 0;gap:14px}
+.technology .tech-caption{max-width:100%;min-width:0}
+@media(max-width:900px){.technology .tech-layout{gap:32px}.technology .tech-visual{height:360px}.technology .tech-points{gap:20px}}
+@media(max-width:720px){.technology .tech-layout{grid-template-columns:1fr;gap:28px}.technology .tech-visual{height:auto;aspect-ratio:4/3;margin-top:0}.technology .tech-points{grid-template-columns:1fr;gap:0}.technology .tech-points>div{padding:22px 0;border-bottom:1px solid #ffffff36}.technology .tech-copy h2{font-size:clamp(2rem,8vw,3rem)}.technology .tech-visual img{height:100%}}

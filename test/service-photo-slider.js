@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!track || !previous || !next || groups.length < 2) return;
 
     let current = 0;
+    const viewport = track.parentElement;
+    track.style.alignItems = 'flex-start';
+    const fitHeight = () => {
+      viewport.style.height = `${groups[current].getBoundingClientRect().height}px`;
+    };
+    const resizeObserver = new ResizeObserver(fitHeight);
+    groups.forEach(group => resizeObserver.observe(group));
 
     const update = () => {
       track.style.transform = `translateX(-${current * 100}%)`;
@@ -15,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
       next.disabled = current === groups.length - 1;
       previous.classList.toggle('disabled', previous.disabled);
       next.classList.toggle('disabled', next.disabled);
+      fitHeight();
     };
 
     previous.addEventListener('click', () => {
