@@ -21,7 +21,7 @@
   display: flex;
   flex-flow: column wrap;
   align-content: flex-start;
-  height: 750px; /* Фиксированная высота заставляет карточки переноситься в новую колонку */
+  height: 950px; /* Увеличил высоту для крупных карточек */
   gap: 24px;
   padding: 40px calc((100vw - 1200px) / 2); /* Отступы, чтобы начиналось по сетке контейнера */
   overflow-x: auto;
@@ -40,7 +40,7 @@
 }
 
 .review-card {
-  width: 320px;
+  width: 380px; /* Карточки стали крупнее */
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -152,11 +152,11 @@
 
 @media (max-width: 768px) {
   .reviews-track {
-    height: 600px;
+    height: 750px; /* Выше для мобильных с крупными карточками */
     gap: 16px;
   }
   .review-card {
-    width: 260px;
+    width: 320px; /* Крупнее на телефонах */
   }
   .review-card:nth-child(even),
   .review-card:nth-child(3n),
