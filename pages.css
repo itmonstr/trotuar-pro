@@ -53,6 +53,9 @@
 .slider-btn { background: #fff; border: 1px solid #d5ddd3; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--ink); transition: all 0.2s; padding: 0; line-height: 1; text-align: center; }
 .slider-btn:hover:not(.disabled) { background: var(--lime); border-color: var(--lime); }
 .slider-btn.disabled { opacity: 0.5; cursor: not-allowed; }
+.photo-section .slider-btn { font-size: 0; position: relative; }
+.photo-section .slider-btn::before { content: ""; display: block; width: 9px; height: 9px; border: solid currentColor; border-width: 0 0 1.5px 1.5px; transform: translateX(2px) rotate(45deg); }
+.photo-section .slider-btn.next-btn::before { border-width: 1.5px 1.5px 0 0; transform: translateX(-2px) rotate(45deg); }
 .slider-container { overflow: hidden; position: relative; margin-top: 40px; }
 .slider-track { display: flex; transition: transform 0.4s ease-in-out; }
 .slide-group { flex: 0 0 100%; min-width: 100%; }
