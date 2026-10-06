@@ -11,7 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261001-services2">
+  <link rel="stylesheet" href="styles.css?v=20261006-forms2">
+  <link rel="stylesheet" href="request-form.css?v=20261006-forms2">
   <link rel="stylesheet" href="projects.css?v=20261001-services2">
   <link rel="stylesheet" href="responsive.css?v=layout-review2">
   <link rel="stylesheet" href="hero-overrides.css?v=1">
@@ -146,12 +147,13 @@
       </div>
     </section>
 
-    <section class="request" id="request"><div class="container request-inner"><div><div class="eyebrow lime"><span class="eyebrow-line"></span> Следующий шаг</div><h2>Обсудим вашу<br>территорию?</h2><p>Оставьте описание задачи — подготовим основу для разговора о решении и стоимости.</p></div><form id="request-form" class="request-form" action="send.php" method="post"><label>Как к вам обращаться<input name="name" autocomplete="name" required placeholder="Ваше имя"></label><label>Телефон для связи<input name="phone" autocomplete="tel" inputmode="tel" required placeholder="+7 (999) 999-99-99"></label><label>Что нужно сделать<textarea name="task" rows="3" required placeholder="Например: мощение двора, примерно 120 м²"></textarea></label><label class="form-trap" aria-hidden="true">Сайт<input name="website" tabindex="-1" autocomplete="off"></label><button class="button button-lime" type="submit">Отправить заявку <span aria-hidden="true">↗</span></button><p class="form-note">Ответим по телефону и уточним детали участка.</p><div id="request-result" class="request-result" hidden><p id="request-result-message"></p><textarea id="request-text" rows="6" readonly></textarea><button class="copy-button" type="button">Скопировать текст</button></div></form></div></section>
+    <section class="request" id="request"><div class="container request-inner"><div><div class="eyebrow lime"><span class="eyebrow-line"></span> Следующий шаг</div><h2>Обсудим вашу<br>территорию?</h2><p>Расскажите о задаче — свяжемся с вами и обсудим решение и стоимость.</p></div><form id="request-form" class="request-form" action="send.php" method="post"><label>Ваше имя<input name="name" autocomplete="name" required minlength="2" maxlength="80" placeholder="Как к вам обращаться"></label><label>Номер телефона<input name="phone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="18" placeholder="+7 (999) 999-99-99"></label><label>Что нужно сделать<textarea name="task" rows="3" required minlength="5" maxlength="2000" placeholder="Например: уложить плитку во дворе, около 120 м²"></textarea></label><fieldset class="contact-choice"><legend>Где удобно связаться?</legend><div class="contact-options"><label><input type="radio" name="contact_method" value="phone" checked><span>Телефон</span></label><label><input type="radio" name="contact_method" value="telegram"><span>Telegram</span></label><label><input type="radio" name="contact_method" value="max"><span>MAX</span></label><label><input type="radio" name="contact_method" value="email"><span>Почта</span></label></div></fieldset><label class="contact-extra" data-method="telegram" hidden>Ваш ник в Telegram<input name="telegram" maxlength="33" pattern="@[A-Za-z0-9_]{5,32}" title="Укажите ник в формате @username" placeholder="@username" autocomplete="off" disabled></label><label class="contact-extra" data-method="email" hidden>Ваш адрес почты<input name="email" type="email" autocomplete="email" maxlength="254" placeholder="name@example.com" disabled></label><div class="form-trap" aria-hidden="true" hidden><input name="website" tabindex="-1" autocomplete="off"></div><button class="button button-lime" type="submit">Отправить</button><p id="request-status" class="form-status" role="status" aria-live="polite" hidden></p></form></div></section>
   </main>
   <footer class="site-footer"><div class="container"><span>© 2026 Тротуар_Про</span><span>Мощение и благоустройство территорий</span><a href="#top">Наверх ↑</a></div></footer>
-  <script src="script.js"></script>
+  <script src="script.js?v=20261006-forms2"></script>
   <script src="projects.js"></script>
   <script src="photo-viewer.js?v=1" defer></script>
   <script src="reviews.js" defer></script>
 </body>
 </html>
+
